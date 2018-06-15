@@ -8,7 +8,9 @@ class NewCard extends Component {
   constructor () {
     super()
     this.state = {
-      gameTitle: ''
+      gameTitle: '',
+      games: []
+
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,13 +32,42 @@ class NewCard extends Component {
     })
   }
 
+  componentDidMount () {
+    const gamesRef = firebase.database().ref('games')
+    gamesRef.on('value', (snapshot) => {
+      let games = snapshot.val()
+      let newState = []
+      for (let game in games) {
+        newState.push({
+          id: game,
+          gameTitle: games[game].gameTitle
+        })
+      }
+      this.setState({
+        game: newState
+      })
+    })
+  }
+
   render () {
     return (
       <div className='new-note-container'>
         <form onSubmit={this.handleSubmit}>
           <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Add a favorite video game.' />
           <button>Add Game!</button>
+          
         </form>
+        <div>
+            <ul>
+              {this.state.games.map((game) => {
+                return (
+                  <li key={game.id}>
+                    <h3>{game.gameTitle}</h3>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
       </div>
     )
   }

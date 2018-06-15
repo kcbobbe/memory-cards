@@ -1,5 +1,6 @@
 import firebase from 'firebase'
-
+// import firebase from 'firebase/app' is better
+import 'firebase/auth'
 var config = {
   apiKey: 'AIzaSyB4IejRn-PCxezTfTlOU1DdkDE8cekxV4U',
   authDomain: 'memory-cards-5a4ad.firebaseapp.com',
