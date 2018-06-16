@@ -2,6 +2,7 @@
 
 import React from 'react'
 import firebase from './firebase'
+import { Link } from 'react-router-dom'
 
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'

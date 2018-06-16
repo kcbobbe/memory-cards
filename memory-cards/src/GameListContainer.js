@@ -2,9 +2,9 @@ import React from 'react'
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
 // import Database from '../Database'
+import { Route } from 'react-router-dom'
 import GameListCards from './GameListCards'
 import firebase from './firebase'
-
 
 class GameListContainer extends React.Component {
   constructor () {
@@ -40,7 +40,8 @@ class GameListContainer extends React.Component {
         <div>
           {this.state.games.map((game) => {
             return (
-              <GameListCards game={game} />
+              // <GameListCards game={game} />
+              <Route exact path='/' component={GameListCards} game={game} />
             )
           })
           }
