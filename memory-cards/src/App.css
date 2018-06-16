@@ -30,3 +30,10 @@
 .header {
   background-color: lightcyan;
 }
+
+.gameContainer {
+  background-color: lightgoldenrodyellow;
+  border: 2px solid lightslategray;
+  margin:1rem auto 1rem auto;
+  width:70%;
+}

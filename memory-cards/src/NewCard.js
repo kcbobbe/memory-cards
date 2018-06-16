@@ -64,10 +64,11 @@ class NewCard extends Component {
           <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
           <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
           <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Add a photo URL' />
-          <input type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
-
+          <div>
+            <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
+          </div>
           <button>Add Game!</button>
-          
+
         </form>
         {/* <div>
           <ul>

@@ -15,29 +15,9 @@ class GameListCards extends React.Component {
     }
   }
 
-  // componentDidMount () {
-  //   const gamesRef = firebase.database().ref('games')
-  //   gamesRef.on('value', (snapshot) => {
-  //     let games = snapshot.val()
-  //     let newState = []
-  //     for (let game in games) {
-  //       newState.push({
-  //         id: game,
-  //         gameTitle: games[game].gameTitle,
-  //         gameSystem: games[game].gameSystem,
-  //         gamePhoto: games[game].gamePhoto,
-  //         gameMemory: games[game].gameMemory
-  //       })
-  //     }
-  //     this.setState({
-  //       games: newState
-  //     })
-  //   })
-  // }
-
   render () {
     return (
-      <div>
+      <div className='gameContainer'>
         <div key={this.props.game.id}>
           <h3>{this.props.game.gameTitle}</h3>
           <div>{this.props.game.gameSystem}</div>
