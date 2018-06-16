@@ -9,11 +9,10 @@ class NewCard extends Component {
     super()
     this.state = {
       gameTitle: '',
-      gameSystem:'',
-      gamePhoto:'',
-      gameMemory:'',
-      games: []
-
+      gameSystem: '',
+      gamePhoto: '',
+      gameMemory: '',
+      // games: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -38,25 +37,25 @@ class NewCard extends Component {
     })
   }
 
-  componentDidMount () {
-    const gamesRef = firebase.database().ref('games')
-    gamesRef.on('value', (snapshot) => {
-      let games = snapshot.val()
-      let newState = []
-      for (let game in games) {
-        newState.push({
-          id: game,
-          gameTitle: games[game].gameTitle,
-          gameSystem: games[game].gameSystem,
-          gamePhoto: games[game].gamePhoto,
-          gameMemory: games[game].gameMemory
-        })
-      }
-      this.setState({
-        games: newState
-      })
-    })
-  }
+  // componentDidMount () {
+  //   const gamesRef = firebase.database().ref('games')
+  //   gamesRef.on('value', (snapshot) => {
+  //     let games = snapshot.val()
+  //     let newState = []
+  //     for (let game in games) {
+  //       newState.push({
+  //         id: game,
+  //         gameTitle: games[game].gameTitle,
+  //         gameSystem: games[game].gameSystem,
+  //         gamePhoto: games[game].gamePhoto,
+  //         gameMemory: games[game].gameMemory
+  //       })
+  //     }
+  //     this.setState({
+  //       games: newState
+  //     })
+  //   })
+  // }
 
   render () {
     return (
@@ -70,7 +69,7 @@ class NewCard extends Component {
           <button>Add Game!</button>
           
         </form>
-        <div>
+        {/* <div>
           <ul>
             {this.state.games.map((game) => {
               return (
@@ -83,7 +82,7 @@ class NewCard extends Component {
               )
             })}
           </ul>
-        </div>
+        </div> */}
       </div>
     )
   }
