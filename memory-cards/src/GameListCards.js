@@ -17,6 +17,8 @@ class GameListCards extends React.Component {
   }
 
   render () {
+    console.log(this.props.game.id)
+
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>
@@ -24,6 +26,9 @@ class GameListCards extends React.Component {
           <div>{this.props.game.gameSystem}</div>
           <div><img width='200px' src={this.props.game.gamePhoto} /></div>
           <div>{this.props.game.gameMemory}</div>
+        </div>
+        <div>
+          <button className='button edit-button'>EDIT</button>
         </div>
       </div>
     )

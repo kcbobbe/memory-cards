@@ -39,9 +39,13 @@ class GameListContainer extends React.Component {
       <div>
         <div>
           {this.state.games.map((game) => {
+            const gameID = game.id
             return (
-              // <GameListCards game={game} />
-              <Route exact path='/' component={GameListCards} game={game} />
+              <GameListCards game={game} />
+              // <Route
+              //   path='/:{game.id}'
+              //   render={(props) => <GameListCards {...props} game={game} />}
+              // />
             )
           })
           }
