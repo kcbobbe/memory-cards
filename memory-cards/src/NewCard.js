@@ -37,25 +37,25 @@ class NewCard extends Component {
     })
   }
 
-  // componentDidMount () {
-  //   const gamesRef = firebase.database().ref('games')
-  //   gamesRef.on('value', (snapshot) => {
-  //     let games = snapshot.val()
-  //     let newState = []
-  //     for (let game in games) {
-  //       newState.push({
-  //         id: game,
-  //         gameTitle: games[game].gameTitle,
-  //         gameSystem: games[game].gameSystem,
-  //         gamePhoto: games[game].gamePhoto,
-  //         gameMemory: games[game].gameMemory
-  //       })
-  //     }
-  //     this.setState({
-  //       games: newState
-  //     })
-  //   })
-  // }
+  componentDidMount () {
+    const gamesRef = firebase.database().ref('games')
+    gamesRef.on('value', (snapshot) => {
+      let games = snapshot.val()
+      let newState = []
+      for (let game in games) {
+        newState.push({
+          id: game,
+          gameTitle: games[game].gameTitle,
+          gameSystem: games[game].gameSystem,
+          gamePhoto: games[game].gamePhoto,
+          gameMemory: games[game].gameMemory
+        })
+      }
+      this.setState({
+        games: newState
+      })
+    })
+  }
 
   render () {
     return (
@@ -68,8 +68,10 @@ class NewCard extends Component {
             <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
           </div>
           <button>Add Game!</button>
-
         </form>
+        <Link to='/'>
+          <div>BACK</div>
+        </Link>
         {/* <div>
           <ul>
             {this.state.games.map((game) => {

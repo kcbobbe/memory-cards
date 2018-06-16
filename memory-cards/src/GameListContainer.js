@@ -31,6 +31,11 @@ class GameListContainer extends React.Component {
       this.setState({
         games: newState
       })
+      // .then(() => {
+      // (this.props.history.push('/'))
+      // }
+      // )
+    // })
     })
   }
 

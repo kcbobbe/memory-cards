@@ -6,6 +6,7 @@ import GameListContainer from './GameListContainer'
 import PageHeader from './PageHeader'
 import NewCard from './NewCard'
 import firebase from './firebase'
+import UserContext from './UserContext'
 
 class App extends Component {
   constructor () {
@@ -14,19 +15,28 @@ class App extends Component {
       user: firebase.auth().currentUser
     }
   }
+  componentDidMount () {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user: user
+      })
+    })
+  }
 
   render () {
     return (
-      <div className='App'>
-        <div>
-          <PageHeader />
-          {/* <Route exact path='/' component={GameListContainer} /> */}
-          <Route exact path='/new' component={NewCard} />
-          <Route exact path='/' component={GameListContainer} />
-          {/* <Route path='/category/:categoryId' component={GameNoteContainer} />>
-          <Routh path ='/' */}
+      // <UserContext.Provider value={this.state.user}>
+        <div className='App'>
+          <div>
+            <PageHeader />
+            {/* <Route exact path='/' component={GameListContainer} /> */}
+            <Route exact path='/new' component={NewCard} />
+            <Route exact path='/' component={GameListContainer} />
+            {/* <Route path='/category/:categoryId' component={GameNoteContainer} />>
+            <Routh path ='/' */}
+          </div>
         </div>
-      </div>
+      // </ UserContext.Provider>
     )
   }
 }

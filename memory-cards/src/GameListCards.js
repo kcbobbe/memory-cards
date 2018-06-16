@@ -14,6 +14,13 @@ class GameListCards extends React.Component {
       games: []
 
     }
+    this.deleteCard = this.deleteCard.bind(this)
+  }
+
+  deleteCard (e) {
+    e.preventDefault()
+    const gamesRef = firebase.database().ref(`games/${this.props.game.id}`)
+    gamesRef.remove()
   }
 
   render () {
@@ -29,6 +36,7 @@ class GameListCards extends React.Component {
         </div>
         <div>
           <button className='button edit-button'>EDIT</button>
+          <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
         </div>
       </div>
     )
