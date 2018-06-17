@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import './App.css'
-import request from 'superagent'
 import GameListContainer from './GameListContainer'
 import PageHeader from './PageHeader'
 import NewCard from './NewCard'
 import firebase from './firebase'
 import UserContext from './UserContext'
 import EditGameCard from './EditGameCard'
+import AddComment from './AddComment'
 
 class App extends Component {
   constructor () {
@@ -33,6 +33,10 @@ class App extends Component {
             {/* <Route exact path='/' component={GameListContainer} /> */}
             <Route exact path='/new' component={NewCard} />
             <Route exact path='/' component={GameListContainer} />
+            <Route exact path='/comment' component={AddComment} />
+            <Route exact path='/edit' component={EditGameCard} />
+
+
             {/* <Route path='/category/:categoryId' component={GameNoteContainer} />>
             <Routh path ='/' */}
           </div>

@@ -24,16 +24,21 @@ class PageHeader extends React.Component {
     return (
       <div className='header'>
         <h1 className='header-text'>
-          Memory Cards
+         <strong>Memory Cards</strong>
         </h1>
         <div>Love letters to your favorite video games</div>
         <div>
           {user ? (
           <div>
-            <button onClick={this.handleLogout}>Logout</button>
-            <Link to='/new'>
-              <button>Add a memory!</button>
-            </Link>
+            <div>
+              <strong>Welcome, {user.displayName}!</strong>
+            </div>
+            <div>
+              <Link to='/new'>
+                <button className='button-success'>Add a memory!</button>
+              </Link>
+              <button className='button-danger' onClick={this.handleLogout}>Logout</button>
+            </div>
           </div>
           ):(
           <button onClick= {this.handleLogin}>Login</button>

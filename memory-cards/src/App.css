@@ -27,12 +27,15 @@
   to { transform: rotate(360deg); }
 }
 
+button{
+  margin:1rem;
+}
+
 .header {
   background-color: lightcyan;
 }
 
 .gameContainer {
-  background-color: lightgoldenrodyellow;
   border: 2px solid lightslategray;
   margin:1rem auto 1rem auto;
   width:70%;

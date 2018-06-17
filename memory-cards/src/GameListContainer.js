@@ -27,7 +27,9 @@ class GameListContainer extends React.Component {
           gameTitle: games[game].gameTitle,
           gameSystem: games[game].gameSystem,
           gamePhoto: games[game].gamePhoto,
-          gameMemory: games[game].gameMemory
+          gameMemory: games[game].gameMemory,
+          gameUser: games[game].gameUser,
+          gameUserName: games[game].gameUserName
         })
       }
       this.setState({
@@ -62,4 +64,8 @@ class GameListContainer extends React.Component {
   }
 }
 
-export default GameListContainer
+export default props => (
+  <UserContext.Consumer>
+    {user => <GameListContainer {...props} user={user} />}
+  </UserContext.Consumer>
+)

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import EditGameCard from './EditGameCard'
 import { Route } from 'react-router-dom'
 import UserContext from './UserContext'
-
+import AddComment from './AddComment'
 
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
@@ -35,23 +35,37 @@ class GameListCards extends React.Component {
 
   render () {
     const { user } = this.props
-    console.log(this.props.game.id)
+    // const { userId } = this.props.user.uid
+
+    // if (this.props.game.gameUser == this.props.user.uid) {
+    //   console.log('usergame = user')
+    //   console.log(this.props.user.uid)
+    // }
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>
-          <h3>{this.props.game.gameTitle}</h3>
+          <h3><strong>{this.props.game.gameTitle}</strong></h3>
           <div>{this.props.game.gameSystem}</div>
           <div><img width='200px' src={this.props.game.gamePhoto} /></div>
+          {this.props.game.gameUserName && (
+            <div>A memory from <strong>{this.props.game.gameUserName}:</strong></div>
+          )}
           <div>{this.props.game.gameMemory}</div>
         </div>
-        {user && (
+        {user && this.props.game.gameUser == this.props.user.uid && (
           <div>
             <Link to='/edit'>
               <button className='button edit-button'>EDIT</button>
             </Link>
             <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
-            <Route exact path='/edit' component={EditGameCard} />
           </div>
+        )}
+        {user && (
+          <Link to='/comment'>
+            <div>
+              <button className='button comment-button'>Add Comment</button>
+            </div>
+          </Link>
         )}
       </div>
 

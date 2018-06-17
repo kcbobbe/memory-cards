@@ -5,17 +5,14 @@ import { Link } from 'react-router-dom'
 import firebase from './firebase'
 import UserContext from './UserContext'
 
-class NewCard extends Component {
+class AddComment extends Component {
   constructor () {
     super()
     this.state = {
-      gameTitle: '',
-      gameSystem: '',
-      gamePhoto: '',
-      gameMemory: '',
-      gameUser: '',
-      gameUserName: ''
-      // games: []
+      comment: {
+        title: '',
+        text: ''
+      }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,25 +27,20 @@ class NewCard extends Component {
     e.preventDefault()
     const gamesRef = firebase.database().ref('games')
     const user = this.props.user.uid
-    const userName = this.props.user.displayName
-    console.log('why not', userName)
     const game = {
-      gameTitle: this.state.gameTitle,
-      gameSystem: this.state.gameSystem,
-      gamePhoto: this.state.gamePhoto,
-      gameMemory: this.state.gameMemory,
-      gameUser: user,
-      gameUserName: userName
-      // gameUser: this.state.gameUser
+      comment: {
+        title: '',
+        text: ''
+      }
     }
+      // gameUser: this.state.gameUser
+    
     gamesRef.push(game)
     this.setState({
-      gameTitle: '',
-      gameSystem: '',
-      gamePhoto: '',
-      gameMemory: '',
-      gameUser: this.props.user,
-      gameUserName: this.props.userName
+      comment: {
+        title: '',
+        text: ''
+      }
     })
   }
 
@@ -59,13 +51,16 @@ class NewCard extends Component {
       let newState = []
       for (let game in games) {
         newState.push({
-          id: game,
-          gameTitle: games[game].gameTitle,
-          gameSystem: games[game].gameSystem,
-          gamePhoto: games[game].gamePhoto,
-          gameMemory: games[game].gameMemory,
-          gameUser: this.props.user,
-          gameUserName: this.props.userName
+          // id: game,
+          // gameTitle: games[game].gameTitle,
+          // gameSystem: games[game].gameSystem,
+          // gamePhoto: games[game].gamePhoto,
+          // gameMemory: games[game].gameMemory,
+          // gameUser: this.props.user,
+          comment: {
+            title: games[game].title,
+            text: games[game].text
+          }
 
         })
       }
@@ -79,13 +74,11 @@ class NewCard extends Component {
     return (
       <div className='new-note-container'>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
-          <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
-          <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Add a photo URL' />
+          <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.comment.title} placeholder='Title of video game' />
           <div>
-            <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
+            <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.comment.text} placeholder='Add a favorite memory' />
           </div>
-          <button>Add Game!</button>
+          <button>Add Comment!</button>
         </form>
         <Link to='/'>
           <div>BACK</div>
@@ -111,6 +104,6 @@ class NewCard extends Component {
 
 export default props => (
   <UserContext.Consumer>
-    {user => <NewCard {...props} user={user} />}
+    {user => <AddComment {...props} user={user} />}
   </UserContext.Consumer>
 )
