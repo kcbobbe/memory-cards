@@ -1,6 +1,9 @@
 {
   "rules": {
-    ".read": "auth != true",
-    ".write": "auth != true"
+    ".read": true,
+    ".write": "auth != null"
+    // "libraries": {
+    //   ".indexOn": "categoryId"
+  // }
   }
 }

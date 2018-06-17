@@ -5,6 +5,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import GameListCards from './GameListCards'
 import firebase from './firebase'
+import UserContext from './UserContext'
+
 
 class GameListContainer extends React.Component {
   constructor () {

@@ -25,7 +25,6 @@ class App extends Component {
   }
 
   render () {
-    console.log(this.state.user)
     return (
       <UserContext.Provider value={this.state.user}>
         <div className='App'>

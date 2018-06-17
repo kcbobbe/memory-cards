@@ -19,7 +19,7 @@ class PageHeader extends React.Component {
   render () {
     // const { user } = true
     const { user } = this.props
-
+    console.log(user)
 
     return (
       <div className='header'>
@@ -28,11 +28,17 @@ class PageHeader extends React.Component {
         </h1>
         <div>Love letters to your favorite video games</div>
         <div>
-          <button onClick={this.handleLogout}>Logout</button>
+          {user ? (
+          <div>
+            <button onClick={this.handleLogout}>Logout</button>
+            <Link to='/new'>
+              <button>Add a memory!</button>
+            </Link>
+          </div>
+          ):(
           <button onClick= {this.handleLogin}>Login</button>
-          <Link to='/new'>
-            <button>Add a memory!</button>
-          </Link>
+        )}
+          
         
         </div>
       </div>

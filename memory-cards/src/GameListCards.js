@@ -5,6 +5,8 @@ import firebase from './firebase'
 import { Link } from 'react-router-dom'
 import EditGameCard from './EditGameCard'
 import { Route } from 'react-router-dom'
+import UserContext from './UserContext'
+
 
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
@@ -32,8 +34,8 @@ class GameListCards extends React.Component {
   }
 
   render () {
+    const { user } = this.props
     console.log(this.props.game.id)
-
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>
@@ -42,16 +44,23 @@ class GameListCards extends React.Component {
           <div><img width='200px' src={this.props.game.gamePhoto} /></div>
           <div>{this.props.game.gameMemory}</div>
         </div>
-        <div>
-          <Link to='/edit'>
-            <button className='button edit-button'>EDIT</button>
-          </Link>
-          <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
-          <Route exact path='/edit' component={EditGameCard} />
-        </div>
+        {user && (
+          <div>
+            <Link to='/edit'>
+              <button className='button edit-button'>EDIT</button>
+            </Link>
+            <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
+            <Route exact path='/edit' component={EditGameCard} />
+          </div>
+        )}
       </div>
+
     )
   }
 }
 
-export default GameListCards
+export default props => (
+  <UserContext.Consumer>
+    {user => <GameListCards {...props} user={user} />}
+  </UserContext.Consumer>
+)
