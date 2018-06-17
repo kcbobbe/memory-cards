@@ -3,6 +3,8 @@
 import React from 'react'
 import firebase from './firebase'
 import { Link } from 'react-router-dom'
+import EditGameCard from './EditGameCard'
+import { Route } from 'react-router-dom'
 
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
@@ -23,6 +25,12 @@ class GameListCards extends React.Component {
     gamesRef.remove()
   }
 
+  editCard (e) {
+    e.preventDefault()
+    const gamesRef = firebase.database().ref(`games/${this.props.game.id}`)
+
+  }
+
   render () {
     console.log(this.props.game.id)
 
@@ -35,8 +43,11 @@ class GameListCards extends React.Component {
           <div>{this.props.game.gameMemory}</div>
         </div>
         <div>
-          <button className='button edit-button'>EDIT</button>
+          <Link to='/edit'>
+            <button className='button edit-button'>EDIT</button>
+          </Link>
           <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
+          <Route exact path='/edit' component={EditGameCard} />
         </div>
       </div>
     )

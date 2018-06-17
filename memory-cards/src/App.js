@@ -7,6 +7,7 @@ import PageHeader from './PageHeader'
 import NewCard from './NewCard'
 import firebase from './firebase'
 import UserContext from './UserContext'
+import EditGameCard from './EditGameCard'
 
 class App extends Component {
   constructor () {
@@ -24,8 +25,9 @@ class App extends Component {
   }
 
   render () {
+    console.log(this.state.user)
     return (
-      // <UserContext.Provider value={this.state.user}>
+      <UserContext.Provider value={this.state.user}>
         <div className='App'>
           <div>
             <PageHeader />
@@ -36,7 +38,7 @@ class App extends Component {
             <Routh path ='/' */}
           </div>
         </div>
-      // </ UserContext.Provider>
+      </UserContext.Provider>
     )
   }
 }

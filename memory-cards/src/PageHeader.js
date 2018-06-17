@@ -18,7 +18,7 @@ class PageHeader extends React.Component {
 
   render () {
     // const { user } = true
-    const user = true
+    const { user } = this.props
 
 
     return (
@@ -28,9 +28,8 @@ class PageHeader extends React.Component {
         </h1>
         <div>Love letters to your favorite video games</div>
         <div>
-          {user &&
-        // ? <button onClick={this.handleLogout}>Logout</button>
-        <button onClick= {this.handleLogin}>Login</button>}
+          <button onClick={this.handleLogout}>Logout</button>
+          <button onClick= {this.handleLogin}>Login</button>
           <Link to='/new'>
             <button>Add a memory!</button>
           </Link>
@@ -41,10 +40,10 @@ class PageHeader extends React.Component {
   }
 }
 
-export default PageHeader
+// export default PageHeader
 
-// export default props => (
-//   <UserContext.Consumer>
-//     {user => <PageHeader {...props} user={user} />}
-//   </UserContext.Consumer>
-// )
+export default props => (
+  <UserContext.Consumer>
+    {user => <PageHeader {...props} user={user} />}
+  </UserContext.Consumer>
+)
