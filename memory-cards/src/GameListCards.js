@@ -44,27 +44,27 @@ class GameListCards extends React.Component {
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>
-          <h3><strong>{this.props.game.gameTitle}</strong></h3>
-          <div>{this.props.game.gameSystem}</div>
+          <div className='game-memory-top'>
+            <h3><strong>{this.props.game.gameTitle}</strong></h3>
+            <div>{this.props.game.gameSystem}</div>
+          </div>
           <div><img width='200px' src={this.props.game.gamePhoto} /></div>
           {this.props.game.gameUserName && (
             <div>A memory from <strong>{this.props.game.gameUserName}:</strong></div>
           )}
-          <div>{this.props.game.gameMemory}</div>
+          <div className='game-memory-text'>{this.props.game.gameMemory}</div>
         </div>
         {user && this.props.game.gameUser == this.props.user.uid && (
           <div>
-            <Link to='/edit'>
+            {/* <Link to={`/edit/${this.props.game.id}`}>
               <button className='button edit-button'>EDIT</button>
-            </Link>
+            </Link> */}
             <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
           </div>
         )}
         {user && (
-          <Link to='/comment'>
-            <div>
-              <button className='button comment-button'>Add Comment</button>
-            </div>
+          <Link to={`/comment/${this.props.game.id}`}>
+            <button className='button button-dark comment-button'>Add Comment</button>
           </Link>
         )}
       </div>

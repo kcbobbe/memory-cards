@@ -32,11 +32,33 @@ button{
 }
 
 .header {
-  background-color: lightcyan;
+  background-color: #333333;
+  color: #DDDDDD;
 }
 
 .gameContainer {
   border: 2px solid lightslategray;
   margin:1rem auto 1rem auto;
+  padding: 0;
   width:70%;
+  border-radius: 4px;
+}
+
+.gameContainer img{
+  margin: 1rem;
+  
+}
+
+.game-memory-text{
+  margin:.5rem 0 .5rem 0;
+  background-color: #DDDDDD;
+  color: #333333;
+  padding:.5rem;
+}
+
+.game-memory-top{
+  background-color: #DDDDDD;
+  color: #333333;
+  padding:.5rem;
+
 }

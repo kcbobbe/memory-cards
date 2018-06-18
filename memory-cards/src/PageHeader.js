@@ -41,7 +41,7 @@ class PageHeader extends React.Component {
             </div>
           </div>
           ):(
-          <button onClick= {this.handleLogin}>Login</button>
+          <button onClick= {this.handleLogin}>Login with Google</button>
         )}
           
         

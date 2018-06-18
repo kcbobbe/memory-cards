@@ -33,8 +33,8 @@ class App extends Component {
             {/* <Route exact path='/' component={GameListContainer} /> */}
             <Route exact path='/new' component={NewCard} />
             <Route exact path='/' component={GameListContainer} />
-            <Route exact path='/comment' component={AddComment} />
-            <Route exact path='/edit' component={EditGameCard} />
+            <Route path='/comment' component={AddComment} />
+            <Route path='/edit' component={EditGameCard} />
 
 
             {/* <Route path='/category/:categoryId' component={GameNoteContainer} />>
