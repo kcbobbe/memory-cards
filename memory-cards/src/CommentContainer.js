@@ -17,9 +17,11 @@ class CommentContainer extends React.Component {
   }
 
   componentDidMount () {
-    const commentsRef = firebase.database().ref(`${this.props.gameID}/comments`)
+    const commentsRef = firebase.database().ref(`games/${this.props.gameId}/comments`)
     commentsRef.on('value', (snapshot) => {
       let comments = snapshot.val()
+      console.log('check', this.props.gameId)
+      console.log('check', comments)
       let newState = []
       for (let comment in comments) {
         newState.push({
@@ -48,7 +50,7 @@ class CommentContainer extends React.Component {
     return (
       <div>
         <div>
-          {this.state.games.map((comment) => {
+          {this.state.comments.map((comment) => {
             // const gameID = game.id
             return (
               <Comment comment={comment} />

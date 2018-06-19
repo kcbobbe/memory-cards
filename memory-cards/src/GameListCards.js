@@ -35,12 +35,14 @@ class GameListCards extends React.Component {
 
   render () {
     const { user } = this.props
+    const gameID = this.props.game.id
     // const { userId } = this.props.user.uid
 
     // if (this.props.game.gameUser == this.props.user.uid) {
     //   console.log('usergame = user')
     //   console.log(this.props.user.uid)
     // }
+    console.log(this.props.game.id)
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>
@@ -67,7 +69,7 @@ class GameListCards extends React.Component {
             <button className='button button-dark comment-button'>Add Comment</button>
           </Link>
         )}
-        {/* <CommentContainer gameId={this.props.game.id} /> */}
+        <CommentContainer gameId={gameID} />
       </div>
 
     )
