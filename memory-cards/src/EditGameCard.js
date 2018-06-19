@@ -34,42 +34,22 @@ class EditGameCard extends React.Component {
       gamePhoto: this.state.gamePhoto,
       gameMemory: this.state.gameMemory
     }
-    gamesRef.push(game)
-    this.setState({
-      gameTitle: '',
-      gameSystem: '',
-      gamePhoto: '',
-      gameMemory: ''
-    })
+    return gamesRef
+      .update(game)
+      .then(response => {
+        return response
+      })
+    // gamesRef.push(game)
+    // this.setState({
+    //   gameTitle: '',
+    //   gameSystem: '',
+    //   gamePhoto: '',
+    //   gameMemory: ''
+    // })
   }
   editCard () {
 
   }
-
-  // componentDidMount () {
-  //   const gameId = (this.props.location.pathname).slice(6)
-  //   const gamesRef = firebase.database().ref(`games/${gameId}`)
-  //   gamesRef.on('value', (snapshot) => {
-  //     let games = snapshot.val()
-  //     let newState = []
-  //     for (let game in games) {
-  //       newState.push({
-  //         id: game,
-  //         gameTitle: games[game].gameTitle,
-  //         gameSystem: games[game].gameSystem,
-  //         gamePhoto: games[game].gamePhoto,
-  //         gameMemory: games[game].gameMemory,
-  //         gameUser: this.props.user,
-  //         gameUserName: this.props.userName
-
-  //       })
-  //     }
-  //     this.setState({
-  //       games: newState
-  //     })
-  //   })
-  // }
-
 
   render () {
     console.log(this.props.location.pathname)

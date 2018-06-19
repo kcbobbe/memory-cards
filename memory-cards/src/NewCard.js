@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import firebase from './firebase'
 import UserContext from './UserContext'
+import { Route } from 'react-router-dom'
+
 
 class NewCard extends Component {
   constructor () {
@@ -49,6 +51,7 @@ class NewCard extends Component {
       gameUser: this.props.user,
       gameUserName: this.props.userName
     })
+    this.props.history.push('/')
   }
 
   componentDidMount () {

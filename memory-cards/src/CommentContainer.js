@@ -2,37 +2,39 @@ import React from 'react'
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
 // import Database from '../Database'
-import { Route } from 'react-router-dom'
+// import { Route } from 'react-router-dom'
 import GameListCards from './GameListCards'
 import firebase from './firebase'
 import UserContext from './UserContext'
+import Comment from './Comment'
 
 class CommentContainer extends React.Component {
   constructor () {
     super()
     this.state = {
-      games: []
+      comments: []
     }
   }
 
   componentDidMount () {
-    const gamesRef = firebase.database().ref('games')
-    gamesRef.on('value', (snapshot) => {
-      let games = snapshot.val()
+    const commentsRef = firebase.database().ref(`${this.props.gameID}/comments`)
+    commentsRef.on('value', (snapshot) => {
+      let comments = snapshot.val()
       let newState = []
-      for (let game in games) {
+      for (let comment in comments) {
         newState.push({
-          id: game,
-          gameTitle: games[game].gameTitle,
-          gameSystem: games[game].gameSystem,
-          gamePhoto: games[game].gamePhoto,
-          gameMemory: games[game].gameMemory,
-          gameUser: games[game].gameUser,
-          gameUserName: games[game].gameUserName
+          id: comment,
+          commentTitle: comments[comment].commentTitle,
+          commentText: comments[comment].commentText,
+          commentUser: comments[comment].commentUser,
+          commentUserName: comments[comment].commentUserName
+          // gameMemory: comments[comment].gameMemory,
+          // gameUser: comments[comment].gameUser,
+          // gameUserName: comments[comment].gameUserName
         })
       }
       this.setState({
-        games: newState
+        comments: newState
       })
       // .then(() => {
       // (this.props.history.push('/'))
@@ -46,10 +48,10 @@ class CommentContainer extends React.Component {
     return (
       <div>
         <div>
-          {this.state.games.map((game) => {
-            const gameID = game.id
+          {this.state.games.map((comment) => {
+            // const gameID = game.id
             return (
-              <GameListCards game={game} />
+              <Comment comment={comment} />
               // <Route
               //   path='/:{game.id}'
               //   render={(props) => <GameListCards {...props} game={game} />}

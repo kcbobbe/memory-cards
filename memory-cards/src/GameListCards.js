@@ -7,6 +7,7 @@ import EditGameCard from './EditGameCard'
 import { Route } from 'react-router-dom'
 import UserContext from './UserContext'
 import AddComment from './AddComment'
+import CommentContainer from './CommentContainer'
 
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
@@ -30,7 +31,6 @@ class GameListCards extends React.Component {
   editCard (e) {
     e.preventDefault()
     const gamesRef = firebase.database().ref(`games/${this.props.game.id}`)
-
   }
 
   render () {
@@ -54,11 +54,11 @@ class GameListCards extends React.Component {
           )}
           <div className='game-memory-text'>{this.props.game.gameMemory}</div>
         </div>
-        {user && this.props.game.gameUser == this.props.user.uid && (
+        {user && this.props.game.gameUser === this.props.user.uid && (
           <div>
-            {/* <Link to={`/edit/${this.props.game.id}`}>
+            <Link to={`/edit/${this.props.game.id}`}>
               <button className='button edit-button'>EDIT</button>
-            </Link> */}
+            </Link>
             <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
           </div>
         )}
@@ -67,6 +67,7 @@ class GameListCards extends React.Component {
             <button className='button button-dark comment-button'>Add Comment</button>
           </Link>
         )}
+        {/* <CommentContainer gameId={this.props.game.id} /> */}
       </div>
 
     )
