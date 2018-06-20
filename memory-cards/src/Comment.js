@@ -1,7 +1,7 @@
 // each card has pic of game, title of game, system, date released
 
 import React from 'react'
-// import firebase from './firebase'
+import firebase from './firebase'
 import { Link } from 'react-router-dom'
 import EditGameCard from './EditGameCard'
 import { Route } from 'react-router-dom'
@@ -19,6 +19,7 @@ class Comment extends React.Component {
 
     }
     // this.deleteCard = this.deleteCard.bind(this)
+    this.upvote = this.upvote.bind(this)
   }
 
   // deleteCard (e) {
@@ -32,24 +33,43 @@ class Comment extends React.Component {
   //   const gamesRef = firebase.database().ref(`games/${this.props.game.id}`)
 
   // }
+  upvote () {
+    this.setState({
+      upvotes: this.state.upvotes + 1
+    })
+    const comment = {
+      commentTitle: this.props.commentTitle,
+      commentText: this.props.commentText,
+      commentUser: this.props.commentUser,
+      commentUserName: this.props.commentUserName,
+      upvotes: this.props.upvotes + this.state.upvotes
+    }
+    const commentsRef = firebase.database().ref(`games/${this.props.gameId}/comments/${this.props.commentId}`)
+    console.log(this.state.upvotes)
+    return commentsRef
+      .update(comment)
+      .then(response => {
+        return response
+      })
+  }
 
   render () {
+
     const { user } = this.props
     // const { userId } = this.props.user.uid
 
     // if (this.props.game.gameUser == this.props.user.uid) {
     //   console.log('usergame = user')
     //   console.log(this.props.user.uid)
-    // }
-    console.log(this.props.user.displayName)
+
     return (
       <div className='commentContainer'>
         <div key={this.props.comment.id}>
-          <div className='game-memory-top'>
-            <h3><strong>{this.props.comment.commentTitle}</strong></h3>
-          </div>
           <div>A comment from <strong>{this.props.user.displayName}:</strong></div>
+          <div><strong>{this.props.comment.commentTitle}</strong></div>
           <div className='game-memory-text'>{this.props.comment.commentText}</div>
+          <div>upvotes:{this.props.comment.upvotes}</div>
+          <button onClick={this.upvote} >upvote button</button>
         </div>
         {/* {user && this.props.game.gameUser == this.props.user.uid && (
           <div>

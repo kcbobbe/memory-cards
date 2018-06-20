@@ -16,10 +16,28 @@ class GameListCards extends React.Component {
   constructor () {
     super()
     this.state = {
-      games: []
+      games: [],
+      viewComments: false,
+      delete: false
 
     }
     this.deleteCard = this.deleteCard.bind(this)
+    this.viewComments = this.viewComments.bind(this)
+    this.deleteCheck = this.deleteCheck.bind(this)
+  }
+
+  viewComments (e) {
+    e.preventDefault()
+    this.setState({
+      viewComments: !this.state.viewComments
+    })
+  }
+
+  deleteCheck (e) {
+    e.preventDefault()
+    this.setState({
+      delete: !this.state.delete
+    })
   }
 
   deleteCard (e) {
@@ -56,20 +74,42 @@ class GameListCards extends React.Component {
           )}
           <div className='game-memory-text'>{this.props.game.gameMemory}</div>
         </div>
-        {user && this.props.game.gameUser === this.props.user.uid && (
-          <div>
-            <Link to={`/edit/${this.props.game.id}`}>
-              <button className='button edit-button'>EDIT</button>
+        <div className='card-buttons'>
+          {user && this.props.game.gameUser === this.props.user.uid && (
+            <div className='edit-delete'>
+              <Link to={`/edit/${this.props.game.id}`}>
+                {/* <button className='button edit-button'>EDIT</button> */}
+                <button>✏️</button>
+              </Link>
+              {/* <button className='button delete-button' onClick={this.deleteCard}>DELETE</button> */}
+              {!this.state.delete && (
+                <button onClick={this.deleteCheck}>💣</button>
+              )}
+              {this.state.delete && (
+                <div>
+                  <button className='button-danger' onClick={this.deleteCard}>Delete?</button>
+                  <button className='button' onClick={this.deleteCheck}>Don't Delete!</button>
+                </div>
+              )}
+            </div>
+          )}
+          {user && (
+            <Link to={`/comment/${this.props.game.id}`}>
+              <button className='button button-dark comment-button'>Add Comment</button>
             </Link>
-            <button className='button delete-button' onClick={this.deleteCard}>DELETE</button>
+          )}
+        </div>
+        {!this.state.viewComments && (
+          <button className='button-dark' onClick={this.viewComments}>show comments</button>
+
+        )}
+        {this.state.viewComments && (
+          <div>
+            <button className='button-dark' onClick={this.viewComments}>hide comments</button>
+            <div>Comments:</div>
+            <CommentContainer gameId={gameID} />
           </div>
         )}
-        {user && (
-          <Link to={`/comment/${this.props.game.id}`}>
-            <button className='button button-dark comment-button'>Add Comment</button>
-          </Link>
-        )}
-        <CommentContainer gameId={gameID} />
       </div>
 
     )

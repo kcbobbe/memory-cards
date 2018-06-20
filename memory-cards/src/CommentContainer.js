@@ -12,8 +12,10 @@ class CommentContainer extends React.Component {
   constructor () {
     super()
     this.state = {
-      comments: []
+      comments: [],
+      upvotes: 0
     }
+    this.upvote = this.upvote.bind(this)
   }
 
   componentDidMount () {
@@ -29,14 +31,16 @@ class CommentContainer extends React.Component {
           commentTitle: comments[comment].commentTitle,
           commentText: comments[comment].commentText,
           commentUser: comments[comment].commentUser,
-          commentUserName: comments[comment].commentUserName
+          commentUserName: comments[comment].commentUserName,
+          upvotes: comments[comment].upvotes
           // gameMemory: comments[comment].gameMemory,
           // gameUser: comments[comment].gameUser,
           // gameUserName: comments[comment].gameUserName
         })
       }
       this.setState({
-        comments: newState
+        comments: newState,
+        upvotes: this.state.upvotes
       })
       // .then(() => {
       // (this.props.history.push('/'))
@@ -46,6 +50,38 @@ class CommentContainer extends React.Component {
     })
   }
 
+  upvote () {
+    this.setState({
+      upvotes: this.state.upvotes + 1
+    })
+    console.log(this.state.upvotes)
+  }
+
+  handleSubmit (e) {
+    const gameId = (this.props.location.pathname).slice(6)
+    // console.log((gameId).slice(6))
+    e.preventDefault()
+    const gamesRef = firebase.database().ref(`games/${gameId}`)
+    const game = {
+      gameTitle: this.state.gameTitle,
+      gameSystem: this.state.gameSystem,
+      gamePhoto: this.state.gamePhoto,
+      gameMemory: this.state.gameMemory
+    }
+    return gamesRef
+      .update(game)
+      .then(response => {
+        return response
+      })
+    // gamesRef.push(game)
+    // this.setState({
+    //   gameTitle: '',
+    //   gameSystem: '',
+    //   gamePhoto: '',
+    //   gameMemory: ''
+    // })
+  }
+
   render () {
     return (
       <div>
@@ -53,11 +89,15 @@ class CommentContainer extends React.Component {
           {this.state.comments.map((comment) => {
             // const gameID = game.id
             return (
-              <Comment comment={comment} />
-              // <Route
+              <div>
+                <Comment comment={comment} />
+                {/* <div>upvotes:{this.state.upvotes}</div> */}
+                {/* <button onClick={this.upvote}>UPVOTE!</button> */}
+              {/* // <Route
               //   path='/:{game.id}'
               //   render={(props) => <GameListCards {...props} game={game} />}
-              // />
+              // /> */}
+              </div>
             )
           })
           }

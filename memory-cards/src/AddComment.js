@@ -10,7 +10,8 @@ class AddComment extends React.Component {
     super()
     this.state = {
       commentTitle: '',
-      commentText: ''
+      commentText: '',
+      upvotes: 0
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -33,14 +34,17 @@ class AddComment extends React.Component {
       commentTitle: this.state.commentTitle,
       commentText: this.state.commentText,
       commentUser: user,
-      commentUserName: userName
+      commentUserName: userName,
+      upvotes: this.state.upvotes
     }
+    console.log('wut', this.state.upvotes)
     gamesRef.push(comments)
     this.setState({
       commentTitle: '',
       commentText: '',
       commentUser: this.state.user,
-      commentUserName: this.state.userName
+      commentUserName: this.state.userName,
+      upvotes: this.state.upvotes
 
     })
   }

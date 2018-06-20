@@ -13,7 +13,6 @@ class EditGameCard extends React.Component {
     this.editCard = this.editCard.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
   // componentDidMount () {
 

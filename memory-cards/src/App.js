@@ -36,8 +36,6 @@ class App extends Component {
             <Route exact path='/' component={GameListContainer} />
             <Route path='/comment' component={AddComment} />
             <Route path='/edit' component={EditGameCard} />
-
-
             {/* <Route path='/category/:categoryId' component={GameNoteContainer} />>
             <Routh path ='/' */}
           </div>

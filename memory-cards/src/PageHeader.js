@@ -24,7 +24,7 @@ class PageHeader extends React.Component {
     return (
       <div className='header'>
         <h1 className='header-text'>
-         <strong>Memory Cards</strong>
+         Memory Cards
         </h1>
         <div>Love letters to your favorite video games</div>
         <div>
