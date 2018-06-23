@@ -28,6 +28,7 @@ class GameListContainer extends React.Component {
           gameSystem: games[game].gameSystem,
           gamePhoto: games[game].gamePhoto,
           gameMemory: games[game].gameMemory,
+          gameMemoryTitle: games[game].gameMemoryTitle,
           gameUser: games[game].gameUser,
           gameUserName: games[game].gameUserName
         })

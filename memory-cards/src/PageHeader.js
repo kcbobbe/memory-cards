@@ -26,7 +26,7 @@ class PageHeader extends React.Component {
         <h1 className='header-text'>
          Memory Cards
         </h1>
-        <div>Love letters to your favorite video games</div>
+        <div className='subtitle'>Love letters to your favorite video games</div>
         <div>
           {user ? (
           <div>
@@ -35,7 +35,7 @@ class PageHeader extends React.Component {
             </div>
             <div>
               <Link to='/new'>
-                <button className='button-success'>Add a memory!</button>
+                <button className='button-light'>Add a memory!</button>
               </Link>
               <button className='button-danger' onClick={this.handleLogout}>Logout</button>
             </div>

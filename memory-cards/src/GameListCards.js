@@ -66,49 +66,53 @@ class GameListCards extends React.Component {
         <div key={this.props.game.id}>
           <div className='game-memory-top'>
             <h3><strong>{this.props.game.gameTitle}</strong></h3>
-            <div>{this.props.game.gameSystem}</div>
+            <div className='game-memory-system'>{this.props.game.gameSystem}</div>
           </div>
-          <div><img width='200px' src={this.props.game.gamePhoto} /></div>
-          {this.props.game.gameUserName && (
-            <div>A memory from <strong>{this.props.game.gameUserName}:</strong></div>
-          )}
-          <div className='game-memory-text'>{this.props.game.gameMemory}</div>
+          <div className='game-photo'><img width='200px' src={this.props.game.gamePhoto} /></div>
+          <div className='card-buttons'>
+            {user && this.props.game.gameUser === this.props.user.uid && (
+              <div className='edit-delete'>
+                <Link to={`/edit/${this.props.game.id}`}>
+                  {/* <button className='button edit-button'>EDIT</button> */}
+                  <button className='button-secondary'>✏️ Edit</button>
+                </Link>
+                {/* <button className='button delete-button' onClick={this.deleteCard}>DELETE</button> */}
+                {!this.state.delete && (
+                  <button onClick={this.deleteCheck} className='button-danger'>💣 Delete</button>
+                )}
+                {this.state.delete && (
+                  <div>
+                    <button className='button-danger' onClick={this.deleteCard}>Delete?</button>
+                    <button className='button' onClick={this.deleteCheck}>Don't Delete!</button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <div className='memory-content'>
+            <div className='game-memory-title'>{this.props.game.gameMemoryTitle}</div>
+            <div className='game-memory-text'>{this.props.game.gameMemory}</div>
+            {this.props.game.gameUserName && (
+              <div className='memory-user'>- Memory from {this.props.game.gameUserName}</div>
+            )}
+          </div>
         </div>
-        <div className='card-buttons'>
-          {user && this.props.game.gameUser === this.props.user.uid && (
-            <div className='edit-delete'>
-              <Link to={`/edit/${this.props.game.id}`}>
-                {/* <button className='button edit-button'>EDIT</button> */}
-                <button>✏️</button>
-              </Link>
-              {/* <button className='button delete-button' onClick={this.deleteCard}>DELETE</button> */}
-              {!this.state.delete && (
-                <button onClick={this.deleteCheck}>💣</button>
-              )}
-              {this.state.delete && (
-                <div>
-                  <button className='button-danger' onClick={this.deleteCard}>Delete?</button>
-                  <button className='button' onClick={this.deleteCheck}>Don't Delete!</button>
-                </div>
-              )}
-            </div>
-          )}
-          {user && (
-            <Link to={`/comment/${this.props.game.id}`}>
-              <button className='button button-dark comment-button'>Add Comment</button>
-            </Link>
-          )}
-        </div>
+
         {!this.state.viewComments && (
-          <button className='button-dark' onClick={this.viewComments}>show comments</button>
+          <button className='button-light' onClick={this.viewComments}>Show comments</button>
 
         )}
         {this.state.viewComments && (
           <div>
-            <button className='button-dark' onClick={this.viewComments}>hide comments</button>
-            <div>Comments:</div>
             <CommentContainer gameId={gameID} />
+            <button className='button-light' onClick={this.viewComments}>Hide comments</button>
+            {/* <div>Comments:</div> */}
           </div>
+        )}
+        {user && (
+          <Link to={`/comment/${this.props.game.id}`}>
+            <button className='button button-dark comment-button'>Add Comment</button>
+          </Link>
         )}
       </div>
 

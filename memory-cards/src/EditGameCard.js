@@ -7,7 +7,12 @@ class EditGameCard extends React.Component {
   constructor () {
     super()
     this.state = {
-      games: []
+      games: [],
+      gameTitle: '',
+      gameSystem: '',
+      gamePhoto: '',
+      gameMemory: '',
+      gameMemoryTitle: ''
 
     }
     this.editCard = this.editCard.bind(this)
@@ -31,7 +36,8 @@ class EditGameCard extends React.Component {
       gameTitle: this.state.gameTitle,
       gameSystem: this.state.gameSystem,
       gamePhoto: this.state.gamePhoto,
-      gameMemory: this.state.gameMemory
+      gameMemory: this.state.gameMemory,
+      gameMemoryTitle: this.state.gameMemoryTitle
     }
     return gamesRef
       .update(game)
@@ -54,12 +60,30 @@ class EditGameCard extends React.Component {
     console.log(this.props.location.pathname)
     // console.log(game.id)
     return (
-      <div className='new-note-container'>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
-          <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
-          <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Add a photo URL' />
-          <div>
+      <div className='edit-note-container'>
+        <form className='edit-note-form' onSubmit={this.handleSubmit}>
+          <div class='input-field'>
+            <label>Title of Game</label>
+            <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
+          </div>
+
+          <div class='input-field'>
+            <label>Console</label>
+            <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
+          </div>
+
+          <div class='input-field'>
+            <label>Photo</label>
+            <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Add a photo URL' />
+          </div>
+
+          <div class='input-field'>
+            <label>Title</label>
+            <input type='text' name='gameMemoryTitle' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Change your title' />
+          </div>
+
+          <div class='input-field'>
+            <label>Your memory</label>
             <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemory} placeholder='Add a favorite memory' />
           </div>
           <button>Add Game!</button>

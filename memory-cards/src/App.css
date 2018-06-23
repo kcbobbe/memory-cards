@@ -9,24 +9,46 @@ button{
 .header {
   background-color: #333333;
   color: #DDDDDD;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lato', sans-serif;
 
 }
 
 .header-text{
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lato', sans-serif;
+  padding-top:1rem;
+  margin-bottom:0;
 }
 
-/* .gameContainer {
-  border: 2px solid lightslategray;
+.subtitle{
+  font-size:24px;
+  margin-bottom:.5rem;
+}
+
+
+.memory-content{
+  text-align:left;
+  padding:.5rem;
   margin:1rem auto 1rem auto;
-  padding: 0;
+  width:90%;
+  border-top:2px solid lightslategray;
+  border-bottom:2px solid lightslategray;
+}
+
+.gameContainer {
+  background-color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  /* border: 2px solid lightslategray; */
+  margin:1rem auto 1rem auto;
+  padding: .5rem;
   width:70%;
   border-radius: 4px;
-} */
+  box-shadow: 0px 0px 58px -14px rgba(0,0,0,0.75);
 
-.gameContainer img{
-  margin: 1rem;
+}
+
+.game-photo{
+  width:40%;
+  margin: .5rem auto .5rem auto;
   
 }
 
@@ -45,13 +67,40 @@ button{
 /* } */
 
 .commentContainer{
-  background-color:#DDDDDD;
-  border-radius:3px;
-  margin:1rem;
+  text-align:left;
+  padding:.5rem;
+  margin:1rem auto 1rem auto;
+  width:80%;
+  border-top:1px solid lightslategray;
+  border-bottom:1px solid lightslategray;
+  /* border-right:2px solid lightslategray;
+  border-left:2px solid lightslategray; */
+  /* box-shadow: 2px 0px 44px -14px rgba(0,0,0,0.75); */
+
+
 }
 
 .edit-delete{
   font-size:40px;
   text-align:center;
-  margin:20px;
+  margin:0;
+}
+
+.memory-user{
+  font-style:italic;  
+}
+
+.game-memory-title{
+  font-size: 20px;
+  font-weight:bold;
+}
+
+.game-memory-text{
+  margin:1rem auto 1rem auto;
+}
+
+.edit-note-form{
+  width:60%;
+  margin:1rem auto 1rem auto;
+  text-align:left;
 }

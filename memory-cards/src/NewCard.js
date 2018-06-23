@@ -15,6 +15,7 @@ class NewCard extends Component {
       gameSystem: '',
       gamePhoto: '',
       gameMemory: '',
+      gameMemoryTitle:'',
       gameUser: '',
       gameUserName: ''
       // games: []
@@ -38,6 +39,7 @@ class NewCard extends Component {
       gameSystem: this.state.gameSystem,
       gamePhoto: this.state.gamePhoto,
       gameMemory: this.state.gameMemory,
+      gameMemoryTitle: this.state.gameMemoryTitle,
       gameUser: user,
       gameUserName: userName
       // gameUser: this.state.gameUser
@@ -47,6 +49,7 @@ class NewCard extends Component {
       gameTitle: '',
       gameSystem: '',
       gamePhoto: '',
+      gameMemoryTitle: '',
       gameMemory: '',
       gameUser: this.props.user,
       gameUserName: this.props.userName
@@ -66,6 +69,7 @@ class NewCard extends Component {
           gameSystem: games[game].gameSystem,
           gamePhoto: games[game].gamePhoto,
           gameMemory: games[game].gameMemory,
+          gameMemoryTitle: games[game].gameMemoryTitle,
           gameUser: this.props.user,
           gameUserName: this.props.userName
 
@@ -86,6 +90,7 @@ class NewCard extends Component {
           <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
           <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
           <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Add a photo URL' />
+          <input type='text' name='gameMemoryTitle' onChange={this.handleChange} value={this.state.gameMemoryTitle} placeholder='Add a title of your memory' />
           <div>
             <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
           </div>

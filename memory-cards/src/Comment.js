@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom'
 import UserContext from './UserContext'
 import AddComment from './AddComment'
 
+
 // import CategoryList from './CategoryList'
 // import Loader from './Loader'
 
@@ -65,11 +66,11 @@ class Comment extends React.Component {
     return (
       <div className='commentContainer'>
         <div key={this.props.comment.id}>
-          <div>A comment from <strong>{this.props.user.displayName}:</strong></div>
-          <div><strong>{this.props.comment.commentTitle}</strong></div>
-          <div className='game-memory-text'>{this.props.comment.commentText}</div>
-          <div>upvotes:{this.props.comment.upvotes}</div>
-          <button onClick={this.upvote} >upvote button</button>
+          <div className='comment-user'><strong>{this.props.user.displayName}:</strong></div>
+          {/* <div className='comment-title'><strong>{this.props.comment.commentTitle}</strong></div> */}
+          <div className='comment-text'>{this.props.comment.commentText}</div>
+          {/* <div>upvotes:{this.props.comment.upvotes}</div>
+          <button onClick={this.upvote} >upvote button</button> */}
         </div>
         {/* {user && this.props.game.gameUser == this.props.user.uid && (
           <div>
