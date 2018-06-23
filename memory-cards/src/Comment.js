@@ -66,7 +66,7 @@ class Comment extends React.Component {
     return (
       <div className='commentContainer'>
         <div key={this.props.comment.id}>
-          <div className='comment-user'><strong>{this.props.user.displayName}:</strong></div>
+          <div className='comment-user'><strong>{this.props.comment.commentUserName}</strong></div>
           {/* <div className='comment-title'><strong>{this.props.comment.commentTitle}</strong></div> */}
           <div className='comment-text'>{this.props.comment.commentText}</div>
           {/* <div>upvotes:{this.props.comment.upvotes}</div>

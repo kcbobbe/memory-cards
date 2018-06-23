@@ -57,22 +57,22 @@ class CommentContainer extends React.Component {
     console.log(this.state.upvotes)
   }
 
-  handleSubmit (e) {
-    const gameId = (this.props.location.pathname).slice(6)
-    // console.log((gameId).slice(6))
-    e.preventDefault()
-    const gamesRef = firebase.database().ref(`games/${gameId}`)
-    const game = {
-      gameTitle: this.state.gameTitle,
-      gameSystem: this.state.gameSystem,
-      gamePhoto: this.state.gamePhoto,
-      gameMemory: this.state.gameMemory
-    }
-    return gamesRef
-      .update(game)
-      .then(response => {
-        return response
-      })
+  // handleSubmit (e) {
+  //   const gameId = (this.props.location.pathname).slice(6)
+  //   // console.log((gameId).slice(6))
+  //   e.preventDefault()
+  //   const gamesRef = firebase.database().ref(`games/${gameId}`)
+  //   const game = {
+  //     gameTitle: this.state.gameTitle,
+  //     gameSystem: this.state.gameSystem,
+  //     gamePhoto: this.state.gamePhoto,
+  //     gameMemory: this.state.gameMemory
+  //   }
+  //   return gamesRef
+  //     .update(game)
+  //     .then(response => {
+  //       return response
+  //     })
     // gamesRef.push(game)
     // this.setState({
     //   gameTitle: '',
@@ -80,7 +80,7 @@ class CommentContainer extends React.Component {
     //   gamePhoto: '',
     //   gameMemory: ''
     // })
-  }
+  // }
 
   render () {
     return (

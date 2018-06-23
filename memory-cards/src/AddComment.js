@@ -42,8 +42,8 @@ class AddComment extends React.Component {
     this.setState({
       commentTitle: '',
       commentText: '',
-      commentUser: this.state.user,
-      commentUserName: this.state.userName,
+      commentUser: this.props.user,
+      commentUserName: this.props.userName,
       upvotes: this.state.upvotes
 
     })
