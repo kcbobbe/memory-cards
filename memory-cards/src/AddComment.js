@@ -47,6 +47,7 @@ class AddComment extends React.Component {
       upvotes: this.state.upvotes
 
     })
+    this.props.history.push('/')
   }
 
   render () {
