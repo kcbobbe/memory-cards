@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+button{
+  margin:0.5rem 1rem 0.5rem 1rem;
+}
+
+.header {
+  background-color: #333333;
+  color: #DDDDDD;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.header-text{
+  font-family: 'Lato', sans-serif;
+  padding-top:1rem;
+  margin-bottom:0;
+}
+
+.subtitle{
+  font-size:24px;
+  margin-bottom:.5rem;
+}
+
+
+.memory-content{
+  text-align:left;
+  padding:.5rem;
+  margin:1rem auto 1rem auto;
+  width:90%;
+  border-top:2px solid lightslategray;
+  border-bottom:2px solid lightslategray;
+}
+
+.gameContainer {
+  background-color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  /* border: 2px solid lightslategray; */
+  margin:1rem auto 1rem auto;
+  padding: .5rem;
+  width:70%;
+  border-radius: 4px;
+  box-shadow: 0px 0px 58px -14px rgba(0,0,0,0.75);
+
+}
+
+.game-photo{
+  width:40%;
+  margin: .5rem auto .5rem auto;
+  
+}
+
+/* .game-memory-text{
+  margin:.5rem 0 .5rem 0;
+  background-color: #F4F4F4;
+  color: #333333;
+  padding:.5rem;
+}
+
+.game-memory-top{
+  background-color: #F4F4F4;
+  color: #333333;
+  padding:.5rem; */
+
+/* } */
+
+.commentContainer{
+  text-align:left;
+  padding:.5rem;
+  margin:1rem auto 1rem auto;
+  width:80%;
+  border-top:1px solid lightslategray;
+  border-bottom:1px solid lightslategray;
+  /* border-right:2px solid lightslategray;
+  border-left:2px solid lightslategray; */
+  /* box-shadow: 2px 0px 44px -14px rgba(0,0,0,0.75); */
+
+
+}
+
+.edit-delete{
+  font-size:40px;
+  text-align:center;
+  margin:0;
+}
+
+.memory-user{
+  font-style:italic;  
+}
+
+.game-memory-title{
+  font-size: 20px;
+  font-weight:bold;
+}
+
+.game-memory-text{
+  margin:1rem auto 1rem auto;
+}
+
+.edit-note-form{
+  width:60%;
+  margin:1rem auto 1rem auto;
+  text-align:left;
+}
