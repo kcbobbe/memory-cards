@@ -46,7 +46,6 @@ class Comment extends React.Component {
       upvotes: this.props.upvotes + this.state.upvotes
     }
     const commentsRef = firebase.database().ref(`games/${this.props.gameId}/comments/${this.props.commentId}`)
-    console.log(this.state.upvotes)
     return commentsRef
       .update(comment)
       .then(response => {

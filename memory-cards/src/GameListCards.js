@@ -60,7 +60,6 @@ class GameListCards extends React.Component {
     //   console.log('usergame = user')
     //   console.log(this.props.user.uid)
     // }
-    console.log(this.props.game.id)
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>

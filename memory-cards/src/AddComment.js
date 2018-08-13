@@ -18,7 +18,6 @@ class AddComment extends React.Component {
   }
 
   handleChange (e) {
-    console.log((this.props.location.pathname).slice(9))
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -31,16 +30,15 @@ class AddComment extends React.Component {
     const user = this.props.user.uid
     const userName = this.props.user.displayName
     const comments = {
-      commentTitle: this.state.commentTitle,
+      // commentTitle: this.state.commentTitle,
       commentText: this.state.commentText,
       commentUser: user,
       commentUserName: userName,
       upvotes: this.state.upvotes
     }
-    console.log('wut', this.state.upvotes)
     gamesRef.push(comments)
     this.setState({
-      commentTitle: '',
+      // commentTitle: '',
       commentText: '',
       commentUser: this.props.user,
       commentUserName: this.props.userName,
@@ -52,9 +50,9 @@ class AddComment extends React.Component {
 
   render () {
     return (
-      <div className='new-note-container'>
+      <div className='new-note-container input-container'>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' />
+          {/* <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' /> */}
           <div>
             <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} placeholder='Add a favorite memory' />
           </div>

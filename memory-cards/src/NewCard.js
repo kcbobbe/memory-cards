@@ -33,7 +33,6 @@ class NewCard extends Component {
     const gamesRef = firebase.database().ref('games')
     const user = this.props.user.uid
     const userName = this.props.user.displayName
-    console.log('why not', userName)
     const game = {
       gameTitle: this.state.gameTitle,
       gameSystem: this.state.gameSystem,
@@ -85,7 +84,7 @@ class NewCard extends Component {
     // console.log(this.props.location.pathname)
 
     return (
-      <div className='new-note-container'>
+      <div className='new-note-container input-container'>
         <form onSubmit={this.handleSubmit}>
           <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
           <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
@@ -94,7 +93,7 @@ class NewCard extends Component {
           <div>
             <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
           </div>
-          <button>Add Game!</button>
+          <button>Add Memory!</button>
         </form>
         <Link to='/'>
           <div>BACK</div>

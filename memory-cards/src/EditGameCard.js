@@ -57,7 +57,6 @@ class EditGameCard extends React.Component {
   }
 
   render () {
-    console.log(this.props.location.pathname)
     // console.log(game.id)
     return (
       <div className='edit-note-container'>
