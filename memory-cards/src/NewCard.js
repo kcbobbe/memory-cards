@@ -87,18 +87,36 @@ class NewCard extends Component {
     if (this.props.user) {
       return (
         <div className='new-note-container input-container'>
+        <p>
+          Add a favorite memory.
+        </p>
           <form onSubmit={this.handleSubmit}>
-            <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} placeholder='Title of video game' />
-            <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} placeholder='Game System' />
-            <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} placeholder='Add a photo URL' />
-            <input type='text' name='gameMemoryTitle' onChange={this.handleChange} value={this.state.gameMemoryTitle} placeholder='Add a title of your memory' />
-            <div>
-              <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemomry} placeholder='Add a favorite memory' />
+            <div className='text-input input-field'>
+              <label>Game Title</label>
+              <input type='text' name='gameTitle' onChange={this.handleChange} value={this.state.gameTitle} />
+            </div>
+            <div className='text-input input-field'>
+              <label>Game System</label>
+              <input type='text' name='gameSystem' onChange={this.handleChange} value={this.state.gameSystem} />
+            </div>
+            <div className='text-input input-field'>
+              <label>Photo</label>
+              <input type='text' name='gamePhoto' onChange={this.handleChange} value={this.state.gamePhoto} />
+              <p class='input-hint'>Enter the image URL</p>
+            </div>
+            <div className='text-input input-field'>
+              <label>Title</label>
+              <input type='text' name='gameMemoryTitle' onChange={this.handleChange} value={this.state.gameMemoryTitle} />
+              <p class='input-hint'>Add a title of your memory</p>
+            </div>
+            <div className='text-input input-field'>
+              <label>Your Memory</label>
+              <textarea className='memory-input' type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemory} />
             </div>
             <button>Add Memory!</button>
           </form>
           <Link to='/'>
-            <div>BACK</div>
+            <button>BACK</button>
           </Link>
           {/* <div>
             <ul>
@@ -115,12 +133,11 @@ class NewCard extends Component {
             </ul>
           </div> */}
         </div>
-        
       )
     }
-  else {
-    return <Redirect to={'/'} />
-  }
+    else {
+      return <Redirect to={'/'} />
+    }
   }
 }
 

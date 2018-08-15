@@ -22,13 +22,13 @@ class PageHeader extends React.Component {
 
     return (
       <div className='header'>
-        <div className='container'>
+        <div className='container header-contents'>
           <div className='row'>
             <div className='col'>
             <div className='row'>
-          <h3 style={{textAlign:'left'}} className='header-text'>
-          Memory Cards
-          </h3>
+              <h3 style={{textAlign:'left'}} className='header-text'>
+              Memory Cards
+              </h3>
           </div>
           <div className='row'>
             <div style={{textAlign:'left'}} className='subtitle'>Love letters to your favorite video games</div>
@@ -44,10 +44,10 @@ class PageHeader extends React.Component {
               </div> */}
               <div>
                 <Link to='/new'>
-                  <button className='button-light'>+</button>
+                  <button className='button-light'><i class="fas fa-plus"></i></button>
                 </Link>
                 <Link to='/'>
-                  <button className='button-danger' onClick={this.handleLogout}>-></button>
+                  <button className='button-danger' onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button>
                 </Link>
               </div>
             </div>

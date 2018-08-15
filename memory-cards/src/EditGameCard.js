@@ -21,6 +21,7 @@ class EditGameCard extends React.Component {
   }
   // componentDidMount () {
 
+
   handleChange (e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -83,9 +84,10 @@ class EditGameCard extends React.Component {
 
           <div class='input-field'>
             <label>Your memory</label>
-            <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemory} placeholder='Add a favorite memory' />
+            <textarea type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemory} />
           </div>
-          <button>Add Game!</button>
+          <p>{this.state.gameMemory}</p>
+          <button>Edit Memory!</button>
         </form>
         <Link to='/'>
           <div>BACK</div>

@@ -55,8 +55,9 @@ class AddComment extends React.Component {
         <div className='new-note-container input-container'>
           <form onSubmit={this.handleSubmit}>
             {/* <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' /> */}
-            <div>
-              <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} placeholder='Add a favorite memory' />
+            <div className='text-input input-field'>
+              <label>Comment</label>
+              <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} />
             </div>
             <button>Add Comment!</button>
           </form>
