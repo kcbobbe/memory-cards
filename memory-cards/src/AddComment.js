@@ -2,6 +2,7 @@
 // username and current date is automatically sent to firebase
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import firebase from './firebase'
 import UserContext from './UserContext'
 
@@ -49,34 +50,39 @@ class AddComment extends React.Component {
   }
 
   render () {
-    return (
-      <div className='new-note-container input-container'>
-        <form onSubmit={this.handleSubmit}>
-          {/* <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' /> */}
-          <div>
-            <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} placeholder='Add a favorite memory' />
-          </div>
-          <button>Add Comment!</button>
-        </form>
-        <Link to='/'>
-          <div>BACK</div>
-        </Link>
-        {/* <div>
-          <ul>
-            {this.state.games.map((game) => {
-              return (
-                <li key={game.id}>
-                  <h3>{game.gameTitle}</h3>
-                  <div>{game.gameSystem}</div>
-                  <div><img width='200px' src={game.gamePhoto} /></div>
-                  <div>{game.gameMemory}</div>
-                </li>
-              )
-            })}
-          </ul>
-        </div> */}
-      </div>
-    )
+    if (this.props.user) {
+      return (
+        <div className='new-note-container input-container'>
+          <form onSubmit={this.handleSubmit}>
+            {/* <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' /> */}
+            <div>
+              <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} placeholder='Add a favorite memory' />
+            </div>
+            <button>Add Comment!</button>
+          </form>
+          <Link to='/'>
+            <div>BACK</div>
+          </Link>
+          {/* <div>
+            <ul>
+              {this.state.games.map((game) => {
+                return (
+                  <li key={game.id}>
+                    <h3>{game.gameTitle}</h3>
+                    <div>{game.gameSystem}</div>
+                    <div><img width='200px' src={game.gamePhoto} /></div>
+                    <div>{game.gameMemory}</div>
+                  </li>
+                )
+              })}
+            </ul>
+          </div> */}
+        </div>
+      )
+    }
+    else {
+      return <Redirect to={'/'} />
+    }
   }
 }
 

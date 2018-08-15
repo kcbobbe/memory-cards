@@ -54,7 +54,6 @@ class Comment extends React.Component {
   }
 
   render () {
-
     const { user } = this.props
     // const { userId } = this.props.user.uid
 

@@ -3,27 +3,32 @@
 }
 
 button{
-  margin:0.5rem 1rem 0.5rem 1rem;
+  /* margin:0.5rem 1rem 0.5rem 1rem; */
 }
 
 .header {
   background-color: #333333;
   color: #DDDDDD;
   font-family: 'Lato', sans-serif;
+  
 
 }
 
 .header-text{
   font-family: 'Lato', sans-serif;
   padding-top:1rem;
-  margin-bottom:0;
+  margin-bottom:0 auto 0 auto;
 }
 
 .subtitle{
-  font-size:24px;
+  font-size:14px;
   margin-bottom:.5rem;
 }
 
+.header-buttons{
+  padding-top:1rem;
+  margin:0;
+}
 
 .memory-content{
   text-align:left;
