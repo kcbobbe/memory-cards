@@ -22,44 +22,31 @@ class PageHeader extends React.Component {
 
     return (
       <div className='header'>
-        <div className='container header-contents'>
-          <div className='row'>
-            <div className='col'>
-            <div className='row'>
-              <h3 style={{textAlign:'left'}} className='header-text'>
-              Memory Cards
-              </h3>
-          </div>
-          <div className='row'>
-            <div style={{textAlign:'left'}} className='subtitle'>Love letters to your favorite video games</div>
-          </div>
-          </div>
-
-          
-          <div className='col header-buttons'>
-            {user ? (
+        <h1 className='header-text'>
+         Memory Cards
+        </h1>
+       
+        <div>
+          {user ? (
+          <div>
+             <div className='subtitle'>
+              <strong>Welcome, {user.displayName}!</strong>
+            </div>
             <div>
-              {/* <div>
-                <strong>Welcome, {user.displayName}!</strong>
-              </div> */}
-              <div>
-                <Link to='/new'>
-                  <button className='button-light'><i class="fas fa-plus"></i></button>
-                </Link>
-                <Link to='/'>
-                  <button className='button-danger' onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button>
-                </Link>
-              </div>
+              <Link to='/new'>
+                <button className='button-light'>Add a memory!</button>
+              </Link>
+              <button className='button-danger' onClick={this.handleLogout}>Logout</button>
             </div>
-            ):(
-            <button onClick= {this.handleLogin}>Login with Google</button>
-          )}
-            
-            </div>
-
           </div>
+          ):(
+            <div>
+              <div className='subtitle'>Love letters to your favorite video games</div>
+              <button onClick= {this.handleLogin}>Login with Google</button>
+          </div>
+        )}
           
-         
+        
         </div>
       </div>
     )

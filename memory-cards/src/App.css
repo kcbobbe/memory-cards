@@ -3,14 +3,14 @@
 }
 
 button{
-  margin:0.5rem;
+  margin:.5rem 1rem;
 }
 
 .header {
   background-color: #333333;
   color: #DDDDDD;
   font-family: 'Lato', sans-serif;
-  
+  padding:1.5rem;
 
 }
 
@@ -23,16 +23,17 @@ button{
   font-family: 'Lato', sans-serif;
   padding-top:1rem;
   margin-bottom:0 auto 0 auto;
+  /* text-align:left; */
 }
 
 .subtitle{
-  font-size:14px;
+  font-size:16px;
   margin-bottom:.5rem;
+  /* text-align:left; */
 }
 
 .header-buttons{
-  padding-top:1rem;
-  margin:0;
+  padding:1rem auto 1rem auto;
   text-align:right;
 }
 
@@ -130,3 +131,24 @@ button{
 .memory-input{
   height:300px;
 }
+
+/* @media screen and (max-width:400px) {
+  .header-buttons{
+    padding-top:0rem;
+    text-align:center;
+    margin:0;
+  }
+  .header-contents{
+    margin:auto;
+    text-align:center;
+  }
+  .header-text{
+    text-align:center;
+    margin:auto;
+  }
+  .subtitle{
+    margin:auto;
+  }
+
+  
+} */

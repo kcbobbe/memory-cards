@@ -45,6 +45,9 @@ class EditGameCard extends React.Component {
       .then(response => {
         return response
       })
+      .then(() => {
+        this.props.history.push('/')
+      })
     // gamesRef.push(game)
     // this.setState({
     //   gameTitle: '',
@@ -53,6 +56,8 @@ class EditGameCard extends React.Component {
     //   gameMemory: ''
     // })
   }
+
+
   editCard () {
 
   }

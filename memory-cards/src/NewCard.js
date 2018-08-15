@@ -87,9 +87,9 @@ class NewCard extends Component {
     if (this.props.user) {
       return (
         <div className='new-note-container input-container'>
-        <p>
-          Add a favorite memory.
-        </p>
+          <h3>
+            Share a favorite memory.
+          </h3>
           <form onSubmit={this.handleSubmit}>
             <div className='text-input input-field'>
               <label>Game Title</label>
@@ -114,10 +114,11 @@ class NewCard extends Component {
               <textarea className='memory-input' type='text' name='gameMemory' onChange={this.handleChange} value={this.state.gameMemory} />
             </div>
             <button>Add Memory!</button>
+            <Link to='/'>
+              <button className='button-danger'>Cancel</button>
+            </Link>
           </form>
-          <Link to='/'>
-            <button>BACK</button>
-          </Link>
+          
           {/* <div>
             <ul>
               {this.state.games.map((game) => {

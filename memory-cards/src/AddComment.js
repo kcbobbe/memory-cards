@@ -53,17 +53,20 @@ class AddComment extends React.Component {
     if (this.props.user) {
       return (
         <div className='new-note-container input-container'>
+          <h3>
+            Share a comment
+          </h3>
           <form onSubmit={this.handleSubmit}>
             {/* <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' /> */}
             <div className='text-input input-field'>
-              <label>Comment</label>
               <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} />
             </div>
             <button>Add Comment!</button>
+            <Link to='/'>
+              <button className='button-danger'>Cancel</button>
+            </Link>
           </form>
-          <Link to='/'>
-            <div>BACK</div>
-          </Link>
+          
           {/* <div>
             <ul>
               {this.state.games.map((game) => {
