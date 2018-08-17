@@ -22,8 +22,6 @@ class CommentContainer extends React.Component {
     const commentsRef = firebase.database().ref(`games/${this.props.gameId}/comments`)
     commentsRef.on('value', (snapshot) => {
       let comments = snapshot.val()
-      console.log('check', this.props.gameId)
-      console.log('check', comments)
       let newState = []
       for (let comment in comments) {
         newState.push({
@@ -54,7 +52,6 @@ class CommentContainer extends React.Component {
     this.setState({
       upvotes: this.state.upvotes + 1
     })
-    console.log(this.state.upvotes)
   }
 
   // handleSubmit (e) {

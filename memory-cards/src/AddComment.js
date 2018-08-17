@@ -2,6 +2,7 @@
 // username and current date is automatically sent to firebase
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import firebase from './firebase'
 import UserContext from './UserContext'
 
@@ -18,7 +19,6 @@ class AddComment extends React.Component {
   }
 
   handleChange (e) {
-    console.log((this.props.location.pathname).slice(9))
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -31,16 +31,15 @@ class AddComment extends React.Component {
     const user = this.props.user.uid
     const userName = this.props.user.displayName
     const comments = {
-      commentTitle: this.state.commentTitle,
+      // commentTitle: this.state.commentTitle,
       commentText: this.state.commentText,
       commentUser: user,
       commentUserName: userName,
       upvotes: this.state.upvotes
     }
-    console.log('wut', this.state.upvotes)
     gamesRef.push(comments)
     this.setState({
-      commentTitle: '',
+      // commentTitle: '',
       commentText: '',
       commentUser: this.props.user,
       commentUserName: this.props.userName,
@@ -51,34 +50,43 @@ class AddComment extends React.Component {
   }
 
   render () {
-    return (
-      <div className='new-note-container'>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' />
-          <div>
-            <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} placeholder='Add a favorite memory' />
-          </div>
-          <button>Add Comment!</button>
-        </form>
-        <Link to='/'>
-          <div>BACK</div>
-        </Link>
-        {/* <div>
-          <ul>
-            {this.state.games.map((game) => {
-              return (
-                <li key={game.id}>
-                  <h3>{game.gameTitle}</h3>
-                  <div>{game.gameSystem}</div>
-                  <div><img width='200px' src={game.gamePhoto} /></div>
-                  <div>{game.gameMemory}</div>
-                </li>
-              )
-            })}
-          </ul>
-        </div> */}
-      </div>
-    )
+    if (this.props.user) {
+      return (
+        <div className='new-note-container input-container'>
+          <h3>
+            Share a comment
+          </h3>
+          <form onSubmit={this.handleSubmit}>
+            {/* <input type='text' name='commentTitle' onChange={this.handleChange} value={this.state.commentTitle} placeholder='Title of video game' /> */}
+            <div className='text-input input-field'>
+              <textarea type='text' name='commentText' onChange={this.handleChange} value={this.state.commentText} />
+            </div>
+            <button>Add Comment!</button>
+            <Link to='/'>
+              <button className='button-danger'>Cancel</button>
+            </Link>
+          </form>
+          
+          {/* <div>
+            <ul>
+              {this.state.games.map((game) => {
+                return (
+                  <li key={game.id}>
+                    <h3>{game.gameTitle}</h3>
+                    <div>{game.gameSystem}</div>
+                    <div><img width='200px' src={game.gamePhoto} /></div>
+                    <div>{game.gameMemory}</div>
+                  </li>
+                )
+              })}
+            </ul>
+          </div> */}
+        </div>
+      )
+    }
+    else {
+      return <Redirect to={'/'} />
+    }
   }
 }
 

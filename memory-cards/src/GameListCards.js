@@ -60,7 +60,6 @@ class GameListCards extends React.Component {
     //   console.log('usergame = user')
     //   console.log(this.props.user.uid)
     // }
-    console.log(this.props.game.id)
     return (
       <div className='gameContainer'>
         <div key={this.props.game.id}>
@@ -98,22 +97,41 @@ class GameListCards extends React.Component {
           </div>
         </div>
 
-        {!this.state.viewComments && (
+        {!this.state.viewComments && !user && (
           <button className='button-light' onClick={this.viewComments}>Show comments</button>
 
         )}
-        {this.state.viewComments && (
+        {this.state.viewComments && !user && (
           <div>
             <CommentContainer gameId={gameID} />
             <button className='button-light' onClick={this.viewComments}>Hide comments</button>
             {/* <div>Comments:</div> */}
           </div>
         )}
-        {user && (
+
+        {!this.state.viewComments && user && (
+          <div>
+            <button className='button-light' onClick={this.viewComments}>Show comments</button>
+            <Link to={`/comment/${this.props.game.id}`}>
+              <button className='button button-dark comment-button'>Add Comment</button>
+            </Link>
+          </div>
+        )}
+        {this.state.viewComments && user && (
+          <div>
+            <CommentContainer gameId={gameID} />
+            <button className='button-light' onClick={this.viewComments}>Hide comments</button>
+            {/* <div>Comments:</div> */}
+            <Link to={`/comment/${this.props.game.id}`}>
+              <button className='button button-dark comment-button'>Add Comment</button>
+            </Link>
+          </div>
+        )}
+        {/* {user && (
           <Link to={`/comment/${this.props.game.id}`}>
             <button className='button button-dark comment-button'>Add Comment</button>
           </Link>
-        )}
+        )} */}
       </div>
 
     )

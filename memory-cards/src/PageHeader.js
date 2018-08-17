@@ -19,18 +19,17 @@ class PageHeader extends React.Component {
   render () {
     // const { user } = true
     const { user } = this.props
-    console.log(user)
 
     return (
       <div className='header'>
         <h1 className='header-text'>
          Memory Cards
         </h1>
-        <div className='subtitle'>Love letters to your favorite video games</div>
+       
         <div>
           {user ? (
           <div>
-            <div>
+             <div className='subtitle'>
               <strong>Welcome, {user.displayName}!</strong>
             </div>
             <div>
@@ -41,7 +40,10 @@ class PageHeader extends React.Component {
             </div>
           </div>
           ):(
-          <button onClick= {this.handleLogin}>Login with Google</button>
+            <div>
+              <div className='subtitle'>Love letters to your favorite video games</div>
+              <button onClick= {this.handleLogin}>Login with Google</button>
+          </div>
         )}
           
         

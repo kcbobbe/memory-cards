@@ -9,6 +9,7 @@ import firebase from 'firebase'
 import UserContext from './UserContext'
 import EditGameCard from './EditGameCard'
 import AddComment from './AddComment'
+import Dashboard from './Dashboard'
 
 class App extends Component {
   constructor () {
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <UserContext.Provider value={this.state.user}>
         <div className='App'>
+          {/* {this.state.user ? ( */}
           <div>
             <PageHeader />
             {/* <Route exact path='/' component={GameListContainer} /> */}
@@ -39,6 +41,9 @@ class App extends Component {
             {/* <Route path='/category/:categoryId' component={GameNoteContainer} />>
             <Routh path ='/' */}
           </div>
+          {/* ) : (
+            <Route exact path='/' component={Dashboard} />
+          )} */}
         </div>
       </UserContext.Provider>
     )
